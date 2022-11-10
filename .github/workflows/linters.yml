@@ -1,0 +1,18 @@
+name: Linters
+
+on: pull_request
+
+jobs:
+  linters:
+    name: Linters
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 3.1.x
+      - name: Install dependencies
+        run: |
+          bundle install --jobs 4 --retry 3
+      - name: Rubocop Report
+        run: bundle exec rubocop
