@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch('PG_USER', 'postgres') %>
+  password: <%= ENV.fetch('PG_PASSWORD', 'postgres') %>
+  port: <%= ENV.fetch('PG_PORT', 5432) %>
+
+development:
+  <<: *default
+  database: expenses_api_development
+
+test:
+  <<: *default
+  database: <%= ENV.fetch('PG_DATABASE', 'expenses_api_test') %>
+  host: <%= ENV.fetch('PG_HOST',  'localhost') %>
+
+production:
+  <<: *default
+  database: expenses_api_production
+  username: expenses_api
+  password: <%= ENV["EXPENSES_API_DATABASE_PASSWORD"] %>
