@@ -61,3 +61,8 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+group :test do
+  # Code coverage report [https://github.com/simplecov-ruby/simplecov]
+  gem 'simplecov', require: false
+end
