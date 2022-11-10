@@ -45,6 +45,9 @@ group :development, :test do
 
   # Fixtures [https://github.com/thoughtbot/factory_bot_rails]
   gem 'factory_bot_rails'
+
+  # Identify n+1 queries [https://github.com/flyerhzm/bullet]
+  gem 'bullet'
 end
 
 group :development do
