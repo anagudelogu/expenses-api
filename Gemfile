@@ -12,6 +12,12 @@ gem 'pg', '~> 1.1'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', require: false
+
 # Code linter. [https://github.com/rubocop/rubocop]
 gem 'rubocop', require: false
 
@@ -24,11 +30,9 @@ gem 'rubocop-rspec', require: false
 # Performance linter [https://github.com/rubocop/rubocop-performance]
 gem 'rubocop-performance', require: false
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', require: false
+# OpenAPI docs [https://github.com/rswag/rswag]
+gem 'rswag-api'
+gem 'rswag-ui'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -48,6 +52,9 @@ group :development, :test do
 
   # Identify n+1 queries [https://github.com/flyerhzm/bullet]
   gem 'bullet'
+
+  # OpenAPI docs [https://github.com/rswag/rswag]
+  gem 'rswag-specs'
 end
 
 group :development do
