@@ -42,6 +42,9 @@ group :development, :test do
 
   # Testing library [https://github.com/rspec/rspec-rails]
   gem 'rspec-rails', '~> 6.0.0'
+
+  # Fixtures [https://github.com/thoughtbot/factory_bot_rails]
+  gem 'factory_bot_rails'
 end
 
 group :development do
