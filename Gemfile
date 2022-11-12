@@ -37,6 +37,9 @@ gem 'rswag-ui'
 # Authentication engine [https://github.com/heartcombo/devise]
 gem 'devise'
 
+# Handle JWT auth with devise [https://github.com/waiting-for-dev/devise-jwt]
+gem 'devise-jwt'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
