@@ -41,7 +41,7 @@ Metrics/MethodLength:
 
 Metrics/BlockLength:
   CountComments: false
-  Max: 5
+  Max: 10
   AllowedMethods:
     - context
     - describe
@@ -52,6 +52,7 @@ Metrics/BlockLength:
     - draw
     - configure
     - group
+    - setup
 
 # Style Cops
 
