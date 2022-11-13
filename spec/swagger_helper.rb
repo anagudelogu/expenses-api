@@ -18,16 +18,25 @@ RSpec.configure do |config|
     'v1/swagger.yaml' => {
       openapi: '3.0.1',
       info: {
-        title: 'API V1',
+        title: 'EXPENSES API V1',
         version: 'v1',
       },
       paths: {},
+      components: {
+        securitySchemes: {
+          bearer_auth: {
+            type: :http,
+            scheme: :bearer,
+            bearer_format: 'JWT',
+          },
+        },
+      },
       servers: [
         {
           url: 'https://{defaultHost}',
           variables: {
             defaultHost: {
-              default: 'www.example.com',
+              default: 'http://localhost:3000',
             },
           },
         },
