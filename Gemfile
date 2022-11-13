@@ -64,6 +64,9 @@ group :development, :test do
 
   # OpenAPI docs [https://github.com/rswag/rswag]
   gem 'rswag-specs'
+
+  # Fake data [https://github.com/faker-ruby/faker]
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'main'
 end
 
 group :development do
