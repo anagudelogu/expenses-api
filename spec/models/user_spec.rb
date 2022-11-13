@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    context 'when name is blank' do
+      it 'is not valid' do
+        user = build(:user, name: '')
+        expect(user).not_to be_valid
+      end
+    end
+  end
 end

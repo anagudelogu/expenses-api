@@ -1,0 +1,87 @@
+---
+openapi: 3.0.1
+info:
+  title: EXPENSES API V1
+  version: v1
+paths:
+  "/register":
+    post:
+      summary: create account
+      tags:
+      - Authentication
+      description: Creates an account
+      parameters: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              examples:
+                Created:
+                  value:
+                    data:
+                      name: Leroy Hane
+                      email: gabriel_sanford@tillman-bernier.biz
+                      created_date: 13/11/2022
+        '422':
+          description: Invalid params
+          content:
+            application/json:
+              examples:
+                when email is already taken:
+                  value:
+                    status: '422'
+                    errors:
+                    - Email has already been taken
+                when email is blank:
+                  value:
+                    status: '422'
+                    errors:
+                    - Email can't be blank
+                when name is blank:
+                  value:
+                    status: '422'
+                    errors:
+                    - Name can't be blank
+                when password is blank:
+                  value:
+                    status: '422'
+                    errors:
+                    - Password can't be blank
+                when password is less than 6 chars:
+                  value:
+                    status: '422'
+                    errors:
+                    - Password is too short (minimum is 6 characters)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    password:
+                      type: string
+                    confirm_password:
+                      type: string
+                  required:
+                  - email
+                  - name
+                  - password
+                  - confirm_password
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearer_format: JWT
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: http://localhost:3000
