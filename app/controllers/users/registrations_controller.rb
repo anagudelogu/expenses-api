@@ -2,6 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   include RackSessionFix
+  before_action :configure_sign_up_params
   respond_to :json
 
   private
@@ -15,5 +16,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
         errors: resource.errors.full_messages,
       }, status: :unprocessable_entity
     end
+  end
+
+  protected
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 end
