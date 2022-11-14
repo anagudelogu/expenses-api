@@ -185,3 +185,9 @@ Rails/FilePath:
 
 Bundler/OrderedGems:
   Enabled: false
+
+# Rspec Cops
+
+RSpec/VariableName:
+  AllowedPatterns:
+    - ^Authorization

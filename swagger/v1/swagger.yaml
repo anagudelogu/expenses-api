@@ -20,8 +20,8 @@ paths:
                 Created:
                   value:
                     data:
-                      name: Wilhemina Feil Esq.
-                      email: emil.conroy@morar.org
+                      name: Msgr. Altagracia Corkery
+                      email: classie@murray.org
                       created_date: 14/11/2022
         '422':
           description: Invalid params
@@ -88,11 +88,17 @@ paths:
             application/json:
               example:
                 data:
-                  name: Ruby Hoppe
-                  email: cecil@harber-christiansen.biz
+                  name: Faye Douglas MD
+                  email: alva@mueller-reinger.biz
                   created_date: 14/11/2022
         '401':
           description: unauthorized
+          content:
+            application/json:
+              example:
+                errors:
+                - status: '401'
+                  title: Invalid Email or password.
       requestBody:
         content:
           application/json:
@@ -110,6 +116,29 @@ paths:
                   required:
                   - email
                   - password
+  "/logout":
+    delete:
+      summary: Revoke active JWT
+      tags:
+      - Authentication
+      description: Revokes an user's active JWT
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful logout
+          content:
+            application/json:
+              example:
+                data: logged out successfully
+        '401':
+          description: No active session
+          content:
+            application/json:
+              example:
+                errors:
+                - status: '401'
+                  title: Couldn't find an active session.
 components:
   securitySchemes:
     bearer_auth:
