@@ -20,9 +20,9 @@ paths:
                 Created:
                   value:
                     data:
-                      name: Leroy Hane
-                      email: gabriel_sanford@tillman-bernier.biz
-                      created_date: 13/11/2022
+                      name: Wilhemina Feil Esq.
+                      email: emil.conroy@morar.org
+                      created_date: 14/11/2022
         '422':
           description: Invalid params
           content:
@@ -74,6 +74,42 @@ paths:
                   - name
                   - password
                   - confirm_password
+  "/login":
+    post:
+      summary: Authenticate user
+      tags:
+      - Authentication
+      description: Authenticates an user and returns a JWT
+      parameters: []
+      responses:
+        '200':
+          description: authenticated
+          content:
+            application/json:
+              example:
+                data:
+                  name: Ruby Hoppe
+                  email: cecil@harber-christiansen.biz
+                  created_date: 14/11/2022
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
 components:
   securitySchemes:
     bearer_auth:
