@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render json: { data: UserSerializer.new(resource).serializable_hash[:data][:attributes] }, status: :created
     else
       render json: {
-        status: '422',
         errors: resource.errors.full_messages.map { |error| { status: '422', title: error } },
       }, status: :unprocessable_entity
     end

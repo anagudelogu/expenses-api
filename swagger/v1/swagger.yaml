@@ -20,8 +20,8 @@ paths:
                 Created:
                   value:
                     data:
-                      name: Noriko Gerlach
-                      email: jon.barrows@grimes.info
+                      name: Katelin Medhurst Jr.
+                      email: adan_stanton@nienow-ledner.co
                       created_date: 14/11/2022
         '422':
           description: Invalid params
@@ -30,31 +30,26 @@ paths:
               examples:
                 when email is already taken:
                   value:
-                    status: '422'
                     errors:
                     - status: '422'
                       title: Email has already been taken
                 when email is blank:
                   value:
-                    status: '422'
                     errors:
                     - status: '422'
                       title: Email can't be blank
                 when name is blank:
                   value:
-                    status: '422'
                     errors:
                     - status: '422'
                       title: Name can't be blank
                 when password is blank:
                   value:
-                    status: '422'
                     errors:
                     - status: '422'
                       title: Password can't be blank
                 when password is less than 6 chars:
                   value:
-                    status: '422'
                     errors:
                     - status: '422'
                       title: Password is too short (minimum is 6 characters)
@@ -95,8 +90,8 @@ paths:
             application/json:
               example:
                 data:
-                  name: Maggie Erdman
-                  email: jake@feest-becker.org
+                  name: Gov. Timmy Witting
+                  email: michael.kreiger@sauer-ohara.biz
                   created_date: 14/11/2022
         '401':
           description: unauthorized
