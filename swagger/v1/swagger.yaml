@@ -20,8 +20,8 @@ paths:
                 Created:
                   value:
                     data:
-                      name: Msgr. Altagracia Corkery
-                      email: classie@murray.org
+                      name: Camelia Littel
+                      email: son@beatty.org
                       created_date: 14/11/2022
         '422':
           description: Invalid params
@@ -32,27 +32,32 @@ paths:
                   value:
                     status: '422'
                     errors:
-                    - Email has already been taken
+                    - status: '422'
+                      title: Email has already been taken
                 when email is blank:
                   value:
                     status: '422'
                     errors:
-                    - Email can't be blank
+                    - status: '422'
+                      title: Email can't be blank
                 when name is blank:
                   value:
                     status: '422'
                     errors:
-                    - Name can't be blank
+                    - status: '422'
+                      title: Name can't be blank
                 when password is blank:
                   value:
                     status: '422'
                     errors:
-                    - Password can't be blank
+                    - status: '422'
+                      title: Password can't be blank
                 when password is less than 6 chars:
                   value:
                     status: '422'
                     errors:
-                    - Password is too short (minimum is 6 characters)
+                    - status: '422'
+                      title: Password is too short (minimum is 6 characters)
       requestBody:
         content:
           application/json:
@@ -88,8 +93,8 @@ paths:
             application/json:
               example:
                 data:
-                  name: Faye Douglas MD
-                  email: alva@mueller-reinger.biz
+                  name: Elna Macejkovic
+                  email: maxine@mcdermott.org
                   created_date: 14/11/2022
         '401':
           description: unauthorized

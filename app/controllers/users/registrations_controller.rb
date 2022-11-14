@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       render json: {
         status: '422',
-        errors: resource.errors.full_messages,
+        errors: resource.errors.full_messages.map { |error| { status: '422', title: error } },
       }, status: :unprocessable_entity
     end
   end

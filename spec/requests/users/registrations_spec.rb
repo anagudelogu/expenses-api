@@ -37,9 +37,8 @@ RSpec.describe 'users/registrations' do
           let(:params) { { user: attributes_for(:user, email: user.email) } }
 
           run_test! do |response|
-            data = JSON.parse(response.body)
-            expect(data['status']).to eq '422'
-            expect(data['errors']).to contain_exactly 'Email has already been taken'
+            data = JSON.parse(response.body, symbolize_names: true)
+            expect(data[:errors]).to contain_exactly({ status: '422', title: 'Email has already been taken' })
           end
         end
 
@@ -47,9 +46,8 @@ RSpec.describe 'users/registrations' do
           let(:params) { { user: attributes_for(:user, email: '') } }
 
           run_test! do |response|
-            data = JSON.parse(response.body)
-            expect(data['status']).to eq '422'
-            expect(data['errors']).to contain_exactly "Email can't be blank"
+            data = JSON.parse(response.body, symbolize_names: true)
+            expect(data[:errors]).to contain_exactly({ status: '422', title: "Email can't be blank" })
           end
         end
 
@@ -57,9 +55,8 @@ RSpec.describe 'users/registrations' do
           let(:params) { { user: attributes_for(:user, name: '') } }
 
           run_test! do |response|
-            data = JSON.parse(response.body)
-            expect(data['status']).to eq '422'
-            expect(data['errors']).to contain_exactly "Name can't be blank"
+            data = JSON.parse(response.body, symbolize_names: true)
+            expect(data[:errors]).to contain_exactly({ status: '422', title: "Name can't be blank" })
           end
         end
 
@@ -67,9 +64,8 @@ RSpec.describe 'users/registrations' do
           let(:params) { { user: attributes_for(:user, password: '') } }
 
           run_test! do |response|
-            data = JSON.parse(response.body)
-            expect(data['status']).to eq '422'
-            expect(data['errors']).to contain_exactly "Password can't be blank"
+            data = JSON.parse(response.body, symbolize_names: true)
+            expect(data[:errors]).to contain_exactly({ status: '422', title: "Password can't be blank" })
           end
         end
 
@@ -77,9 +73,9 @@ RSpec.describe 'users/registrations' do
           let(:params) { { user: attributes_for(:user, password: 'pass') } }
 
           run_test! do |response|
-            data = JSON.parse(response.body)
-            expect(data['status']).to eq '422'
-            expect(data['errors']).to contain_exactly 'Password is too short (minimum is 6 characters)'
+            data = JSON.parse(response.body, symbolize_names: true)
+            expect(data[:errors]).to contain_exactly({ status: '422',
+                                                       title: 'Password is too short (minimum is 6 characters)' })
           end
         end
       end
