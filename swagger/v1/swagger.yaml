@@ -20,8 +20,8 @@ paths:
                 Created:
                   value:
                     data:
-                      name: Camelia Littel
-                      email: son@beatty.org
+                      name: Noriko Gerlach
+                      email: jon.barrows@grimes.info
                       created_date: 14/11/2022
         '422':
           description: Invalid params
@@ -67,6 +67,8 @@ paths:
                 user:
                   type: object
                   properties:
+                    name:
+                      type: string
                     email:
                       type: string
                       format: email
@@ -93,8 +95,8 @@ paths:
             application/json:
               example:
                 data:
-                  name: Elna Macejkovic
-                  email: maxine@mcdermott.org
+                  name: Maggie Erdman
+                  email: jake@feest-becker.org
                   created_date: 14/11/2022
         '401':
           description: unauthorized
@@ -151,7 +153,7 @@ components:
       scheme: bearer
       bearer_format: JWT
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: http://localhost:3000
+      default: localhost:3000
