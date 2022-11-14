@@ -1,0 +1,154 @@
+---
+openapi: 3.0.1
+info:
+  title: EXPENSES API V1
+  version: v1
+paths:
+  "/register":
+    post:
+      summary: create account
+      tags:
+      - Authentication
+      description: Creates an account
+      parameters: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              examples:
+                Created:
+                  value:
+                    data:
+                      name: Katelin Medhurst Jr.
+                      email: adan_stanton@nienow-ledner.co
+                      created_date: 14/11/2022
+        '422':
+          description: Invalid params
+          content:
+            application/json:
+              examples:
+                when email is already taken:
+                  value:
+                    errors:
+                    - status: '422'
+                      title: Email has already been taken
+                when email is blank:
+                  value:
+                    errors:
+                    - status: '422'
+                      title: Email can't be blank
+                when name is blank:
+                  value:
+                    errors:
+                    - status: '422'
+                      title: Name can't be blank
+                when password is blank:
+                  value:
+                    errors:
+                    - status: '422'
+                      title: Password can't be blank
+                when password is less than 6 chars:
+                  value:
+                    errors:
+                    - status: '422'
+                      title: Password is too short (minimum is 6 characters)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                      format: email
+                    password:
+                      type: string
+                    confirm_password:
+                      type: string
+                  required:
+                  - email
+                  - name
+                  - password
+                  - confirm_password
+  "/login":
+    post:
+      summary: Authenticate user
+      tags:
+      - Authentication
+      description: Authenticates an user and returns a JWT
+      parameters: []
+      responses:
+        '200':
+          description: authenticated
+          content:
+            application/json:
+              example:
+                data:
+                  name: Gov. Timmy Witting
+                  email: michael.kreiger@sauer-ohara.biz
+                  created_date: 14/11/2022
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              example:
+                errors:
+                - status: '401'
+                  title: Invalid Email or password.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
+  "/logout":
+    delete:
+      summary: Revoke active JWT
+      tags:
+      - Authentication
+      description: Revokes an user's active JWT
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful logout
+          content:
+            application/json:
+              example:
+                data: logged out successfully
+        '401':
+          description: No active session
+          content:
+            application/json:
+              example:
+                errors:
+                - status: '401'
+                  title: Couldn't find an active session.
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearer_format: JWT
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000

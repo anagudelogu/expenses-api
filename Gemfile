@@ -34,11 +34,20 @@ gem 'rubocop-performance', require: false
 gem 'rswag-api'
 gem 'rswag-ui'
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+# Authentication engine [https://github.com/heartcombo/devise]
+gem 'devise'
+
+# Handle JWT auth with devise [https://github.com/waiting-for-dev/devise-jwt]
+gem 'devise-jwt'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem "rack-cors"
+gem 'rack-cors'
+
+# Json API serializer [https://github.com/jsonapi-serializer/jsonapi-serializer]
+gem 'jsonapi-serializer'
+
+# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+# gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -55,6 +64,9 @@ group :development, :test do
 
   # OpenAPI docs [https://github.com/rswag/rswag]
   gem 'rswag-specs'
+
+  # Fake data [https://github.com/faker-ruby/faker]
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'main'
 end
 
 group :development do
